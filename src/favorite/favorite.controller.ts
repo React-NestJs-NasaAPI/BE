@@ -10,7 +10,7 @@ import { AuthGuard } from '@nestjs/passport';
 export class FavoriteController {
   constructor(private readonly favoriteService: FavoriteService) {}
 
-  @Post('add')
+  @Post()
   addFavorite(
     @GetUser() user: UserModel,
     @Body('title') title: string,
@@ -31,7 +31,7 @@ export class FavoriteController {
     return this.favoriteService.createFavorite(user, imageInfo);
   }
 
-  @Post('remove')
+  @Delete()
   deleteFavorite(@GetUser() user: UserModel, @Body('url') url: string) {
     return this.favoriteService.removeFavorite(user, url);
   }
